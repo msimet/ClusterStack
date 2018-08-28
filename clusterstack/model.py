@@ -88,7 +88,7 @@ class StackedModel(object):
                  sigma_lnM_lim=(0.2, 0.3), sigma_lnM_lim_type='tophat'):
         # pylint: disable=too-many-arguments, too-many-locals
         try:
-            self.arglist = str(inspect.signature(self.deltasigma)).split()[2:]
+            self.arglist = str(inspect.signature(self.deltasigma))[1:-1].split(', ')[1:]
         except AttributeError:
             self.arglist = inspect.getargspec(self.deltasigma).args[2:]
         self.ln10 = np.log(10.)
