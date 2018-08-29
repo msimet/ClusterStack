@@ -80,7 +80,7 @@ class StackedModel(object):
     # pylint: disable=too-many-instance-attributes
     # Some fragmentation is required to avoid duplication of code in inheritance.
     def __init__(self, lens_richness, lens_redshift, lens_weights,
-                 deltasigma_model_func=None, 
+                 deltasigma_model_func=None,
                  richness_pivot=40, redshift_pivot=0.2,
                  concentration_logscatter=0.14, concentration_mass_func=None,
                  log10M_lim=(13, 15), log10M_lim_type='tophat',
