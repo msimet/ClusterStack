@@ -5,12 +5,14 @@ python:
   - "3.6"
 
 install:
-  - pip install coverage
+  - pip install coverage pylint
   - pip install .
 
 script:
   - cd tests
-  - nosetests --with-coverage --cover-package=clustermodel --cover-erase 
+  - coverage run $(which nosetests)
+  - cd ..
+  - pylint clusterstack --rcfile=.pylint.rc
 
 after_success:
   - coverage xml
@@ -24,3 +26,8 @@ deploy:
   on:
     tags: true
     branch: master
+    
+notifications:
+  email:
+    on_success: never
+    on_failure: change 

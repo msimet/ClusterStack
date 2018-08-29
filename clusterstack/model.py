@@ -80,15 +80,15 @@ class StackedModel(object):
     # pylint: disable=too-many-instance-attributes
     # Some fragmentation is required to avoid duplication of code in inheritance.
     def __init__(self, lens_richness, lens_redshift, lens_weights,
-                 deltasigma_model_func=None, 
+                 deltasigma_model_func=None,
                  richness_pivot=40, redshift_pivot=0.2,
                  concentration_logscatter=0.14, concentration_mass_func=None,
                  log10M_lim=(13, 15), log10M_lim_type='tophat',
                  alpha_lim=(0, 2), alpha_lim_type='tophat',
                  sigma_lnM_lim=(0.2, 0.3), sigma_lnM_lim_type='tophat'):
-        # pylint: disable=too-many-arguments, too-many-locals
+        # pylint: disable=too-many-arguments, too-many-locals, deprecated-method
         try:
-            self.arglist = str(inspect.signature(self.deltasigma)).split()[2:]
+            self.arglist = str(inspect.signature(self.deltasigma))[1:-1].split(', ')[1:]
         except AttributeError:
             self.arglist = inspect.getargspec(self.deltasigma).args[2:]
         self.ln10 = np.log(10.)
