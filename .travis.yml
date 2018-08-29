@@ -5,12 +5,13 @@ python:
   - "3.6"
 
 install:
-  - pip install coverage
+  - pip install coverage, pylint
   - pip install .
 
 script:
   - cd tests
-  - nosetests --with-coverage --cover-package=clustermodel --cover-erase 
+  - coverage run $(which nosetests)
+  - pylint 
 
 after_success:
   - coverage xml
