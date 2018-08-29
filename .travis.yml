@@ -11,7 +11,7 @@ install:
 script:
   - cd tests
   - coverage run $(which nosetests)
-  - pylint 
+  - pylint clusterstack --rcfile=.pylint.rc
 
 after_success:
   - coverage xml
